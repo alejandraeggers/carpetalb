@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LadoB | Próximamente</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Variables de entorno (excluido de git, ver env.example.js) -->
+    <script src="env.js" defer></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f4f3ef; /* Fondo Gris Cálido Premium (Tono lino/arena) */
+            color: #0A0A0C; /* Negro Carbón Profundo */
+        }
+        
+        .thin-border {
+            border: 2px solid #0A0A0C;
+        }
+        
+        /* Rotación continua para el sticker circular */
+        @keyframes rotate-sticker {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: rotate-sticker 25s linear infinite;
+        }
+        
+        /* Sombra leve para la nota con esquina doblada (Posit) */
+        .page-fold {
+            position: relative;
+            background: #ffffff;
+            border: 2px solid #0A0A0C;
+            border-top-right-radius: 16px;
+        }
+        .page-fold::after {
+            content: "";
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 16px;
+            height: 16px;
+            background: #f4f3ef;
+            border-left: 2px solid #0A0A0C;
+            border-bottom: 2px solid #0A0A0C;
+            border-bottom-left-radius: 4px;
+            display: block;
+        }
+
+        /* AJUSTE PARA "UNA SOLA PANTALLA" EN ESCRITORIO Y ADAPTABILIDAD EN MÓVIL */
+        @media (min-height: 681px) and (min-width: 768px) {
+            .main-frame-height {
+                height: 100% !important;
+                max-height: 100% !important;
+                overflow: hidden !important;
+            }
+        }
+    </style>
+</head>
+<body class="h-screen max-h-screen overflow-hidden md:overflow-hidden flex flex-col selection:bg-zinc-900 selection:text-white p-3 md:p-6 lg:p-8">
+
+    <!-- CONTENEDOR PRINCIPAL MODULAR (Estilo Cargo de image_ae8940.png) -->
+    <div class="max-w-7xl w-full mx-auto flex-grow flex flex-col h-full min-h-0 bg-transparent relative">
+        
+        <!-- BARRA SUPERIOR DE PESTAÑA ÚNICA (Solapamiento de 2px perfecto para una sola pestaña) -->
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 -mb-[2px] relative z-10 flex-shrink-0">
+            <!-- Sección Izquierda: Identificador con cursor -->
+            <div class="flex items-center gap-2 text-xs font-bold tracking-widest uppercase py-2 px-1 text-[#0A0A0C]">
+                <i data-lucide="pointer" class="w-4 h-4 rotate-45 stroke-[2]"></i>
+                <span>Próximamente</span>
+            </div>
+
+            <!-- Pestaña única de Cargo que se unifica perfectamente con el marco (Estilo image_b1d6a4.png) -->
+            <div class="flex flex-wrap items-end -mb-[2px]">
+                <div class="px-5 py-2.5 text-xs font-bold tracking-wider uppercase border-2 border-[#0A0A0C] rounded-t-lg bg-[#f4f3ef] text-[#0A0A0C] relative z-20 translate-y-[2px] border-b-[#f4f3ef] cursor-default select-none">
+                    Lado B
+                </div>
+            </div>
+
+            <!-- Enlaces / Redes esquina derecha -->
+            <div class="hidden lg:flex items-center gap-4 text-[#0A0A0C] py-2">
+                <a href="#" class="hover:opacity-70 transition-opacity"><i data-lucide="instagram" class="w-4 h-4 stroke-[2]"></i></a>
+                <a href="#" class="hover:opacity-70 transition-opacity"><i data-lucide="music" class="w-4 h-4 stroke-[2]"></i></a>
+            </div>
+        </div>
+
+        <!-- MARCO PRINCIPAL DE CONTENIDO CON BORDES DE 2PX -->
+        <div class="border-2 border-[#0A0A0C] bg-[#f4f3ef] flex-grow flex flex-col relative z-0 p-4 md:p-6 lg:p-8 min-h-0 justify-between main-frame-height overflow-y-auto">
+            
+            <!-- CONTENIDO DE LA LANDING -->
+            <div class="w-full flex-grow flex flex-col justify-center min-h-0">
+                <div class="space-y-4 lg:space-y-6 relative py-2">
+                    <!-- Filas de Fondos Vectoriales Curvos (Inspirado en la imagen técnica original) -->
+                    <div class="absolute right-0 top-0 w-full md:w-2/3 h-full pointer-events-none opacity-40 md:opacity-70 z-0 overflow-hidden">
+                        <svg viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full object-right object-contain">
+                            <path d="M100,450 Q300,420 500,250 T800,100" stroke="#0A0A0C" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.3"/>
+                            <path d="M120,470 Q340,410 520,220 T820,60" stroke="#0A0A0C" stroke-width="1.5" opacity="0.2"/>
+                            <path d="M140,490 Q380,400 540,190 T840,20" stroke="#0A0A0C" stroke-width="1.5" opacity="0.15"/>
+                            <path d="M200,530 Q440,380 580,140 T880,-40" stroke="#0A0A0C" stroke-width="1" opacity="0.2"/>
+                        </svg>
+                    </div>
+
+                    <!-- Layout Principal -->
+                    <div class="relative z-10 max-w-5xl grid md:grid-cols-12 gap-6 lg:gap-8 items-center min-h-0">
+                        <!-- Columna Izquierda: Mensajes, Registro y Post-its Centrados -->
+                        <div class="md:col-span-8 space-y-4 lg:space-y-5">
+                            
+                            <!-- NOTA ESCRITA SOBRE LA CARPETA (Estilo cinta de rotular pegada) -->
+                            <div class="inline-block bg-[#dbd8ab] border-2 border-[#0A0A0C] px-3 py-1.5 -rotate-1 shadow-xs max-w-md">
+                                <p class="text-[10px] sm:text-xs font-mono text-[#0A0A0C] leading-normal">
+                                    <span class="text-zinc-400 font-bold mr-1">■</span> transformando el dato duro en una experiencia
+                                </p>
+                            </div>
+
+                            <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-[#0A0A0C] tracking-tighter leading-[0.9] uppercase">
+                                Lado B
+                            </h1>
+                            <p class="text-[#0A0A0C] text-xs sm:text-sm max-w-xl leading-relaxed font-normal">
+                                Un espacio de experimentación analógica, digital y modular. Explora las costuras entre el espacio físico y digital, jugando y transformando datos.
+                            </p>
+                            
+                            <!-- Caja de Suscripción Integrada para la Landing (Coming Soon) -->
+                            <div class="space-y-2 pt-1">
+                                <span class="text-[9px] sm:text-[10px] font-mono text-zinc-500 uppercase tracking-widest block">// Entérate cuando estemos al aire</span>
+                                <div class="flex flex-col sm:flex-row gap-2 max-w-md">
+                                    <input type="email" id="subscriber-email" placeholder="Ingresa tu dirección de correo..." class="w-full px-4 py-2 bg-white border-2 border-[#0A0A0C] text-xs font-mono rounded-full focus:outline-none focus:ring-1 focus:ring-zinc-600">
+                                    <button onclick="submitSubscription()" class="px-5 py-2 bg-[#0A0A0C] text-[#f4f3ef] text-xs font-bold uppercase tracking-widest hover:bg-zinc-800 transition-all rounded-full border-2 border-[#0A0A0C] whitespace-nowrap">
+                                        Suscribirme
+                                    </button>
+                                </div>
+                                <div id="sub-success" class="hidden text-xs text-emerald-700 font-bold transition-all">
+                                    ✓ Te avisaremos de forma prioritaria en cuanto el taller abra sus puertas.
+                                </div>
+                            </div>
+
+                            <!-- SECCIÓN DE POSITS PARALELOS BAJO LA SUSCRIPCIÓN - CENTRADOS HORIZONTALMENTE -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3 relative z-10 max-w-2xl mx-auto justify-items-center justify-center">
+                                <!-- NUEVO POSIT ADHESIVO: LÍNEAS DE INVESTIGACIÓN -->
+                                <div class="page-fold p-3.5 w-full max-w-[270px] text-left space-y-2 -rotate-1 hover:rotate-0 transition-transform cursor-default shadow-xs">
+                                    <div class="flex items-center justify-between border-b border-zinc-100 pb-1">
+                                        <p class="text-[9px] font-mono text-zinc-400 uppercase tracking-widest">// Enfoques</p>
+                                        <span class="w-1.5 h-1.5 bg-zinc-950 rounded-full"></span>
+                                    </div>
+                                    <h4 class="text-[11px] font-bold text-[#0A0A0C] uppercase tracking-tight">Líneas de investigación</h4>
+                                    <ul class="text-[9px] text-zinc-600 space-y-1.5 list-none leading-tight">
+                                        <li class="relative pl-3">
+                                            <span class="absolute left-0 text-[#0A0A0C] font-bold">•</span>
+                                            Exploración plástica y digital sobre las transformaciones de la corporalidad femenina - <span class="italic text-zinc-500">Cuerpos y Envejecimiento</span>
+                                        </li>
+                                        <li class="relative pl-3">
+                                            <span class="absolute left-0 text-[#0A0A0C] font-bold">•</span>
+                                            Cartografías del Tránsito - <span class="italic text-zinc-500">Migración y Cambios Culturales</span>
+                                        </li>
+                                        <li class="relative pl-3">
+                                            <span class="absolute left-0 text-[#0A0A0C] font-bold">•</span>
+                                            Estéticas del Dato - <span class="italic text-zinc-500">Frecuencias, Sonidos y Bioparámetros</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <!-- Elementos de Composición Visual (Stickers de Cargo) -->
+                        <div class="md:col-span-4 flex flex-col items-center md:items-end justify-center gap-6 pt-4 md:pt-0 relative">
+                            <!-- Sticker Giratorio SVG (Un poco más compacto) -->
+                            <div class="relative w-32 h-32 sm:w-36 sm:h-36 lg:w-40 lg:h-40 animate-spin-slow flex items-center justify-center">
+                                <svg class="w-full h-full" viewBox="0 0 100 100">
+                                    <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" />
+                                    <circle cx="50" cy="50" r="28" fill="#0A0A0C" />
+                                    <!-- Logotipo / Ojos Centrales en Blanco -->
+                                    <ellipse cx="44" cy="50" rx="2.5" ry="5" fill="#f4f3ef" />
+                                    <ellipse cx="56" cy="50" rx="2.5" ry="5" fill="#f4f3ef" />
+                                    <text font-family="monospace" font-size="6.5" fill="#0A0A0C" font-weight="extrabold" letter-spacing="1">
+                                        <textPath href="#circlePath" spacing="auto">
+                                            • LADO B • ANALÓGICO • DIGITAL • BITÁCORA • TALLER
+                                        </textPath>
+                                    </text>
+                                </svg>
+                            </div>
+
+                            <!-- Nota Adhesiva Original: Manifiesto (Más compacta) -->
+                            <div class="page-fold p-3 w-40 sm:w-48 text-left space-y-1.5 rotate-3 hover:rotate-0 transition-transform cursor-default z-10 shadow-xs">
+                                <p class="text-[8px] font-mono text-zinc-400 uppercase tracking-widest">// Manifiesto 01</p>
+                                <h4 class="text-[10px] font-bold text-[#0A0A0C] uppercase tracking-tight">¿Qué es LadoB?</h4>
+                                <p class="text-[9px] text-zinc-600 leading-tight">
+                                    Espacio de investigación, experimentación y traducción de la memoria social en materia visual.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PIE DE PÁGINA DEL MARCO DE CONTENIDO (ESTILO CARGO) CON FECHA Y HORA -->
+            <div class="pt-4 border-t-2 border-zinc-300/60 mt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 flex-shrink-0">
+                <!-- Reloj y Fecha en Tiempo Real -->
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-xs text-[#0A0A0C] font-semibold">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 bg-red-600 rounded-full animate-ping"></span>
+                        <span id="live-clock">12:37:00</span>
+                    </div>
+                    <span class="text-zinc-400 font-light">/</span>
+                    <span id="live-date" class="text-zinc-500">08.07.2026</span>
+                </div>
+
+                <!-- Botón de píldora de estado (coming soon) -->
+                <div class="flex items-center gap-3">
+                    <span class="px-5 py-1.5 border-2 border-[#0A0A0C] text-[10px] font-extrabold uppercase tracking-widest bg-[#0A0A0C] text-[#f4f3ef] rounded-full select-none">
+                        Fase de Lanzamiento
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ANOTACIÓN EN EL MARGEN DERECHO (PRÓXIMAMENTE) -->
+        <div class="absolute -right-2 md:-right-4 lg:-right-6 top-1/2 -translate-y-1/2 rotate-6 bg-white border-2 border-[#0A0A0C] p-4 shadow-md z-30 w-32 md:w-36 text-center select-none hover:rotate-0 transition-transform">
+            <!-- Cinta de enmascarar decorativa retro pegada sobre el borde -->
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 w-10 h-4 bg-[#dbd8ab]/90 border-l border-r border-[#0A0A0C]/20 -rotate-2"></div>
+            <p class="text-[8px] font-mono text-zinc-400 uppercase tracking-widest mb-1">// Nota</p>
+            <h4 class="text-xs font-bold text-[#0A0A0C] uppercase tracking-widest leading-none">Próximamente</h4>
+        </div>
+
+    </div>
+
+    <!-- SCRIPTS INTERACTIVOS -->
+    <!-- Lucide Icons + Supabase JS cargados antes del script principal -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+        // Toda la lógica se ejecuta cuando el DOM y los scripts externos ya están listos
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // Inicializar iconos Lucide
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+
+            // 1. Reloj y Fecha en tiempo real
+            function updateClock() {
+                const clockEl = document.getElementById('live-clock');
+                const dateEl = document.getElementById('live-date');
+                if (!clockEl || !dateEl) return;
+                const now = new Date();
+                clockEl.textContent = now.toTimeString().split(' ')[0];
+                const day = String(now.getDate()).padStart(2, '0');
+                const month = String(now.getMonth() + 1).padStart(2, '0');
+                dateEl.textContent = `${day}.${month}.${now.getFullYear()}`;
+            }
+            setInterval(updateClock, 1000);
+            updateClock();
+
+            // 2. Inicializar cliente de Supabase usando env.js
+            let supabaseClient = null;
+            try {
+                const cfg = window.ENV;
+                if (!cfg || !cfg.SUPABASE_URL || !cfg.SUPABASE_ANON_KEY) {
+                    throw new Error('Falta el archivo env.js o las variables ENV no están definidas.');
+                }
+                const { createClient } = window.supabase;
+                supabaseClient = createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY);
+            } catch (e) {
+                console.error('[Supabase] Error de inicialización:', e.message);
+            }
+
+            // 3. Registro de suscripción
+            window.submitSubscription = async function () {
+                const emailInput = document.getElementById('subscriber-email');
+                const successMsg = document.getElementById('sub-success');
+                const email = emailInput.value.trim();
+
+                if (!email) return;
+
+                const btn = emailInput.nextElementSibling;
+                emailInput.disabled = true;
+                if (btn) btn.disabled = true;
+
+                try {
+                    if (!supabaseClient) {
+                        throw new Error('Supabase no se inicializó. Verifica env.js y la consola.');
+                    }
+
+                    const { error } = await supabaseClient
+                        .from('subscribers')
+                        .insert([{ email: email }]);
+
+                    if (error) {
+                        // Correo duplicado (restricción UNIQUE de Postgres)
+                        if (error.code === '23505') throw new Error('Este correo ya está registrado.');
+                        throw error;
+                    }
+
+                    emailInput.value = '';
+                    successMsg.textContent = '✓ Te avisaremos de forma prioritaria en cuanto el taller abra sus puertas.';
+                    successMsg.classList.remove('text-red-600', 'hidden');
+                    successMsg.classList.add('text-emerald-700');
+
+                } catch (err) {
+                    console.error('[Supabase] Error al registrar:', err);
+                    successMsg.textContent = `✗ Error: ${err.message || 'No se pudo registrar el correo.'}`;
+                    successMsg.classList.remove('text-emerald-700', 'hidden');
+                    successMsg.classList.add('text-red-600');
+                } finally {
+                    emailInput.disabled = false;
+                    if (btn) btn.disabled = false;
+                }
+
+                setTimeout(() => successMsg.classList.add('hidden'), 6000);
+            };
+
+        }); // fin DOMContentLoaded
+    </script>
+</body>
+</html>

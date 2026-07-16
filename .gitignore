@@ -1,0 +1,10 @@
+# Dependencias de Node (si aplican en el futuro)
+node_modules/
+
+# Archivo de configuración local con credenciales
+# NUNCA subir env.js al repositorio
+env.js
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
